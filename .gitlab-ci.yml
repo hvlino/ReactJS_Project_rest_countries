@@ -4,9 +4,8 @@ stages:
   - build
 eslint:
   image: node:16.13.2
-  only:
-    - staging
-    - main
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
   stage: code_quality
   before_script:
     - npm install
@@ -14,21 +13,24 @@ eslint:
     - npm eslint -- --ext .jsx,.js src/
 unit_tests:
   image: node:16.13.2
-  only:
-    - staging
-    - main
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
   stage: test
   before_script:
     - npm install
   script:
     - npm test
 react_build:
-  image: node:16.13.2
-  only:
-    - staging
-    - main  
+  image: node:16.13.2 
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
   stage: build
   before_script:
     - npm install
   script:
     - npm run-script build
+  artifacts:
+    paths:
+    - build/
+
+
