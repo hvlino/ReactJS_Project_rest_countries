@@ -28,7 +28,7 @@ eslint:
       - node_modules/
     policy: pull
   script:
-    - npm eslint -- --ext .jsx,.js src/
+    - npm run eslint -- --ext .jsx,.js src/
 
 unit_tests:
   rules:
@@ -55,6 +55,6 @@ react_build:
     - npm run-script build
   artifacts:
     paths:
-    - build/
+    - public/
 
 
