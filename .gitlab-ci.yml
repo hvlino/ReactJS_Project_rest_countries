@@ -8,15 +8,14 @@ stages:
 
 install:
   stage: install
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
   cache: 
     key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
     paths:
       - node_modules/
   script:
     - npm install
-  only:
-    changes:
-      - package-lock.json
 
 eslint:
   rules:
