@@ -5,6 +5,7 @@ stages:
   - code_quality
   - test
   - build
+  - pages
 
 install:
   stage: install
@@ -62,9 +63,8 @@ pages:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
   stage: deploy
   variables:
-    GIT_STRATEGY: none        # Do not clone git repo
+    GIT_STRATEGY: none
   script:
-    # Rename the CRA `build` folder to `public`
     - mv build public         
   artifacts:
     paths:
