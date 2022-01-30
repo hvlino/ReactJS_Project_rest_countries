@@ -55,6 +55,6 @@ react_build:
     - npm run-script build
   artifacts:
     paths:
-    - public/
+    - build/
 
 
