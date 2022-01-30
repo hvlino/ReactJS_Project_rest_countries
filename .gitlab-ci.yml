@@ -59,9 +59,9 @@ react_build:
 
 pages:
   image: alpine:latest
+  stage: pages
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-  stage: deploy
   variables:
     GIT_STRATEGY: none
   script:
