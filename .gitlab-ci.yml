@@ -56,4 +56,17 @@ react_build:
     paths:
     - build/
 
+pages:
+  image: alpine:latest
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none        # Do not clone git repo
+  script:
+    # Rename the CRA `build` folder to `public`
+    - mv build public         
+  artifacts:
+    paths:
+      - public
 
