@@ -5,6 +5,7 @@ stages:
   - code_quality
   - test
   - build
+  - pages
 
 install:
   stage: install
@@ -56,4 +57,16 @@ react_build:
     paths:
     - build/
 
+pages:
+  image: alpine:latest
+  stage: pages
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - mv build public         
+  artifacts:
+    paths:
+      - public
 
