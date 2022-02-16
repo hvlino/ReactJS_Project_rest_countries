@@ -1,38 +1,102 @@
-.App {
-  text-align: center;
+.Header {
+  background-color: #fff;
+  border-bottom: 2px solid rgb(219, 214, 214);
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 60px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title {
+  font-weight: bold;
+  font-size: 18px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.theme {
+  font-weight: 600;
+  display: flex;
+  width: 9%;
+  justify-content: space-between;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-n-filter {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 60px;
+}
+
+.search-icon {
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 16px;
+}
+
+.search-bar {
+  outline: none;
+  border: none;
+  width: 350px;
+  height: 45px;
+  padding-left: 50px;
+  border-radius: 7px;
+  -webkit-box-shadow: -1px 12px 24px -17px #000000; 
+  box-shadow: -1px 12px 24px -17px #000000;
+}
+
+.dropdown-filters {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  height: 35px;
+  width: 200px;
+  padding-top: 7px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 7px
+}
+
+.filter-box {
+  -webkit-box-shadow: -1px 12px 24px -17px #000000; 
+  box-shadow: -1px 12px 24px -17px #000000;
+}
+
+.container {
+  display: flex;
+  width: 1300px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding-left: 20px;
+}
+
+.card {
+  margin-top: 35px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 270px;
+}
+
+.card-header img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.country-name {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.info-numbers {
+  font-weight: 600;
+}
+
+.card-body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-start;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-body p {
+  font-size: 16px;
 }
