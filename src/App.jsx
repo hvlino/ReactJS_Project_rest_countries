@@ -4,7 +4,7 @@ import { Context } from './Context';
 import './App.scss';
 
 function App() {
-  const { countries, filterList } = useContext(Context);
+  const { countries } = useContext(Context);
   const options = [
     'America',
     'Europe',
@@ -29,7 +29,6 @@ function App() {
         <div className="dropdown-filters">
           <Dropdown
             options={options}
-            onChange={filterList()}
             placeholder={(
               <div>
                 Filter By Region
@@ -37,7 +36,6 @@ function App() {
               </div>
             )}
             placeholderClassName="filter-box"
-            activeFilter="is-selected"
             arrowOpen={<span className="filter-options" />}
           />
         </div>
