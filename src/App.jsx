@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { getCountries } from './countryServices';
-import './App.css';
+import React, { useContext } from 'react';
+import Dropdown from 'react-dropdown';
+import { Context } from './Context';
+import './App.scss';
 
 function App() {
-  const [countries, setCountries] = useState([]);
-
-  useEffect(async () => {
-    const results = await getCountries();
-    setCountries(results);
-  });
-
+  const { countries, filterList } = useContext(Context);
+  const options = [
+    'America',
+    'Europe',
+    'Asia',
+    'Oceania',
+    'Africa',
+  ];
   return (
     <div className="App">
       <div className="Header">
@@ -25,25 +27,36 @@ function App() {
           <input placeholder="Search for a country" className="search-bar" />
         </div>
         <div className="dropdown-filters">
-          <div className="filter-box">Filter by Region</div>
-          <div><img src="https://img.icons8.com/ios-glyphs/10/000000/chevron-down.png" alt="chevron-down" /></div>
+          <Dropdown
+            options={options}
+            onChange={filterList()}
+            placeholder={(
+              <div>
+                Filter By Region
+                <img src="https://img.icons8.com/ios-glyphs/10/000000/chevron-down.png" alt="chevron-down" />
+              </div>
+            )}
+            placeholderClassName="filter-box"
+            activeFilter="is-selected"
+            arrowOpen={<span className="filter-options" />}
+          />
         </div>
       </div>
       <div className="country-grid">
         <div className="country-card">
           <div className="container">
             {countries.map((country) => (
-              <div className="card">
+              <div className="card" key={country.name.common}>
                 <div className="card-header">
                   <img src={country.flags.png} alt={country.name.common} className="country-image" />
                 </div>
                 <div className="card-body">
                   <div className="country-name">{country.name.common}</div>
-                  <p>
+                  <div>
                     <div className="info-numbers">Population:</div>
                     <div className="info-numbers">Region:</div>
                     <div className="info-numbers">Capital:</div>
-                  </p>
+                  </div>
                 </div>
               </div>
             ))}

@@ -1,0 +1,122 @@
+.App {
+  .Header {
+    background-color: #fff;
+    border-bottom: 2px solid rgb(219, 214, 214);
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 60px;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .theme {
+    font-weight: 600;
+    display: flex;
+    width: 9%;
+    justify-content: space-between;
+  }
+
+  .search-n-filter {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 60px;
+  }
+
+  .search-icon {
+    position: absolute;
+    margin-top: 14px;
+    margin-left: 18px;
+  }
+
+  .search-bar {
+    outline: none;
+    border: none;
+    width: 350px;
+    height: 45px;
+    padding-left: 50px;
+    border-radius: 7px;
+    -webkit-box-shadow: -1px 12px 24px -17px #C4C4C4; 
+    box-shadow: -1px 12px 24px -17px #C4C4C4;
+  }
+
+  .dropdown-filters {
+    background-color: #fff;
+    height: 35px;
+    width: 200px;
+    padding-top: 12px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 7px
+  }
+
+  .filter-box {
+    display: flex;
+    justify-content: space-between;
+    -webkit-box-shadow: -1px 12px 24px -17px #C4C4C4; 
+    box-shadow: -1px 12px 24px -17px #C4C4C4;
+  }
+
+  .Dropdown-option {
+    position: sticky;
+    background-color: #fff;
+    height: 35px;
+    width: 230px;
+    padding-top: 12px;
+    padding-left: 10px;
+    border-radius: 7px;
+  }
+
+  .Dropdown-menu {
+    margin-right: 40px;
+  }
+
+  .container {
+    display: flex;
+    width: 1300px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-left: 20px;
+  }
+
+  .card {
+    margin-top: 35px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 270px;
+  }
+
+  .card-header img {
+    width: 100%;
+    object-fit: fill;
+  }
+
+  .country-image {
+    height: 202px;
+  }
+
+  .country-name {
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+  .info-numbers {
+    font-weight: 600;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .card-body p {
+    font-size: 16px;
+  }
+}
