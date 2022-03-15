@@ -1,17 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Dropdown from 'react-dropdown';
 import { Context } from './Context';
 import './App.scss';
+import 'react-dropdown/style.css';
 
 function App() {
-  const { countries } = useContext(Context);
-  const options = [
-    'America',
-    'Europe',
-    'Asia',
-    'Oceania',
-    'Africa',
-  ];
+  const {
+    loadCountries, setCountries, options, setActiveFilter, filteredCountries,
+  } = useContext(Context);
+
+  useEffect(async () => {
+    const countries = await loadCountries();
+    setCountries(countries);
+  }, []);
   return (
     <div className="App">
       <div className="Header">
@@ -29,21 +30,21 @@ function App() {
         <div className="dropdown-filters">
           <Dropdown
             options={options}
-            placeholder={(
-              <div>
-                Filter By Region
-                <img src="https://img.icons8.com/ios-glyphs/10/000000/chevron-down.png" alt="chevron-down" />
-              </div>
-            )}
-            placeholderClassName="filter-box"
-            arrowOpen={<span className="filter-options" />}
+            placeholder="Filter By Region"
+            arrowOpen={<img src="https://img.icons8.com/ios-glyphs/10/000000/chevron-up.png" alt="chevron-down" />}
+            arrowClosed={<img src="https://img.icons8.com/ios-glyphs/10/000000/chevron-down.png" alt="chevron-down" />}
+            onChange={(filter) => {
+              if (filter) {
+                setActiveFilter(filter.value);
+              }
+            }}
           />
         </div>
       </div>
       <div className="country-grid">
         <div className="country-card">
           <div className="container">
-            {countries.map((country) => (
+            {filteredCountries.map((country) => (
               <div className="card" key={country.name.common}>
                 <div className="card-header">
                   <img src={country.flags.png} alt={country.name.common} className="country-image" />

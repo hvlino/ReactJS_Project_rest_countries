@@ -42,16 +42,6 @@
     box-shadow: -1px 12px 24px -17px #C4C4C4;
   }
 
-  .dropdown-filters {
-    background-color: #fff;
-    height: 35px;
-    width: 200px;
-    padding-top: 12px;
-    padding-right: 20px;
-    padding-left: 20px;
-    border-radius: 7px
-  }
-
   .filter-box {
     display: flex;
     justify-content: space-between;
@@ -59,6 +49,20 @@
     box-shadow: -1px 12px 24px -17px #C4C4C4;
   }
 
+  .Dropdown-control {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    height: 35px;
+    width: 200px;
+    padding-top: 15px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 7px;
+    height: 50px;
+    border: none;
+  }
+  
   .Dropdown-option {
     position: sticky;
     background-color: #fff;
@@ -71,14 +75,19 @@
 
   .Dropdown-menu {
     margin-right: 40px;
+    background-color: #fff;
+    width: 200px;
+    padding-top: 12px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 7px
   }
 
   .container {
-    display: flex;
+    display: grid;
     width: 1300px;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    padding-left: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding-left: 47px;
   }
 
   .card {

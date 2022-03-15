@@ -1,5 +1,6 @@
+/* eslint-disable no-plusplus */
 import React, {
-  createContext, useState, useEffect, useMemo,
+  createContext, useState, useMemo,
 } from 'react';
 import { getCountries } from './countryServices';
 
@@ -7,26 +8,39 @@ export const Context = createContext('');
 
 export default function ctx({ children }) {
   const [countries, setCountries] = useState([]);
-  const [activeFilter, setActiveFilter] = useState('ALL');
-
-  const filterList = useMemo(() => countries.filter((country) => {
-    if (activeFilter === 'ACTIVE') {
-      return !country.completed;
-    }
-    if (activeFilter === 'COMPLETED') {
-      return country.completed;
-    }
-    return true;
-  }));
-
-  useEffect(async () => {
+  const [activeFilter, setActiveFilter] = useState('All');
+  const loadCountries = async () => {
     const results = await getCountries();
-    setCountries(results);
-  });
+    return results;
+  };
 
+  const options = useMemo(() => {
+    const regions = [];
+    for (let i = 0; i < countries.length; i++) {
+      if (!regions.includes(countries[i].region)) {
+        regions.push(countries[i].region);
+      }
+    }
+    regions.sort();
+    regions.unshift('All');
+    return regions;
+  }, [countries]);
+
+  const filteredCountries = useMemo(() => {
+    if (activeFilter === 'All') {
+      return countries;
+    }
+    return countries.filter((country) => country.region === activeFilter);
+  }, [countries, activeFilter]);
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values = {
-    countries, filterList, activeFilter, setActiveFilter,
+    countries,
+    loadCountries,
+    setCountries,
+    options,
+    activeFilter,
+    setActiveFilter,
+    filteredCountries,
   };
 
   return (
