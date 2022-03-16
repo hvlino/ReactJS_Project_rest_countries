@@ -10,6 +10,7 @@
     "axios": "^0.26.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-dropdown": "^1.9.2",
     "react-scripts": "5.0.0",
     "sass": "^1.49.7",
     "web-vitals": "^2.1.4"
@@ -17,7 +18,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false",
+    "test": "react-scripts test --watchAll=false --coverage",
     "eject": "react-scripts eject",
     "eslint": "eslint ./src --ext .js,.jsx"
   },
@@ -46,6 +47,7 @@
     "eslint-plugin-jest": "^26.0.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0"
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "msw": "^0.39.1"
   }
 }

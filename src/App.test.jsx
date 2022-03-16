@@ -1,9 +1,53 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
+import {
+  fireEvent, render, screen, waitFor, prettyDOM,
+} from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
 import App from './App';
+import Provider from './Context';
 
-test('renders learn react link', () => {
-  render(<App />);
+const countries = require('./mocks/countries.json');
+
+const server = setupServer(
+  rest.get('https://restcountries.com/v3.1/all', (req, res, ctx) => res(ctx.json(countries))),
+);
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+
+test('should be able to get the theme text', async () => {
+  await act(async () => {
+    render(<Provider><App /></Provider>);
+  });
   const linkElement = screen.getByText('Dark Mode');
   expect(linkElement).toBeInTheDocument();
 });
+
+test('should be able to get some country names inside document', async () => {
+  await act(async () => {
+    render(<Provider><App /></Provider>);
+  });
+  await waitFor(() => {
+    const regionElement = screen.getByText('Germany');
+    expect(regionElement).toBeInTheDocument();
+  });
+});
+
+test('should be able to filter the countries inside document', async () => {
+  await act(async () => {
+    render(<Provider><App /></Provider>);
+  });
+  await waitFor(() => {
+    const regionElement = screen.getByText('Filter By Region');
+    fireEvent.click(regionElement);
+    console.log(prettyDOM(regionElement));
+    const eua = screen.queryByText('United States');
+    expect(eua).not.toBeInTheDocument();
+  });
+});
+
+// quarta feira promete hein;
+// EH HOJE B)

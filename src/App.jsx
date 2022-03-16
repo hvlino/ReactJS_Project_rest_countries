@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { getCountries } from './countryServices';
-import './App.css';
+import React, { useContext, useEffect } from 'react';
+import Dropdown from 'react-dropdown';
+import { Context } from './Context';
+import './App.scss';
+import 'react-dropdown/style.css';
 
 function App() {
-  const [countries, setCountries] = useState([]);
+  const {
+    loadCountries, setCountries, options, setActiveFilter, filteredCountries,
+  } = useContext(Context);
 
   useEffect(async () => {
-    const results = await getCountries();
-    setCountries(results);
-  });
-
+    const countries = await loadCountries();
+    setCountries(countries);
+  }, []);
   return (
     <div className="App">
       <div className="Header">
@@ -25,25 +28,34 @@ function App() {
           <input placeholder="Search for a country" className="search-bar" />
         </div>
         <div className="dropdown-filters">
-          <div className="filter-box">Filter by Region</div>
-          <div><img src="https://img.icons8.com/ios-glyphs/10/000000/chevron-down.png" alt="chevron-down" /></div>
+          <Dropdown
+            options={options}
+            placeholder="Filter By Region"
+            arrowOpen={<img src="https://img.icons8.com/ios-glyphs/10/000000/chevron-up.png" alt="chevron-down" />}
+            arrowClosed={<img src="https://img.icons8.com/ios-glyphs/10/000000/chevron-down.png" alt="chevron-down" />}
+            onChange={(filter) => {
+              if (filter) {
+                setActiveFilter(filter.value);
+              }
+            }}
+          />
         </div>
       </div>
       <div className="country-grid">
         <div className="country-card">
           <div className="container">
-            {countries.map((country) => (
-              <div className="card">
+            {filteredCountries.map((country) => (
+              <div className="card" key={country.name.common}>
                 <div className="card-header">
                   <img src={country.flags.png} alt={country.name.common} className="country-image" />
                 </div>
                 <div className="card-body">
                   <div className="country-name">{country.name.common}</div>
-                  <p>
+                  <div>
                     <div className="info-numbers">Population:</div>
                     <div className="info-numbers">Region:</div>
                     <div className="info-numbers">Capital:</div>
-                  </p>
+                  </div>
                 </div>
               </div>
             ))}
