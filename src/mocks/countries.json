@@ -82,5 +82,26 @@
         ],
         "region": "Africa",
         "population": 102334403
+    },
+    {
+        "flags": {
+            "png": "https://flagcdn.com/w320/br.png",
+            "svg": "https://flagcdn.com/br.svg"
+        },
+        "name": {
+            "common": "Brazil",
+            "official": "Federative Republic of Brazil",
+            "nativeName": {
+                "por": {
+                    "official": "República Federativa do Brasil",
+                    "common": "Brasil"
+                }
+            }
+        },
+        "capital": [
+            "Brasília"
+        ],
+        "region": "Americas",
+        "population": 212559409
     }
 ]
