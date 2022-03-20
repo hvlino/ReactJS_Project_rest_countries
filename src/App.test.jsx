@@ -34,12 +34,31 @@ test('should be able to get some country names inside document', async () => {
   });
 });
 
-test('should be able to filter the countries inside document', async () => {
+test('should be able to filter the countries inside document (desktop)', async () => {
   await act(async () => {
     render(<Provider><App /></Provider>);
   });
   await waitFor(async () => {
     const regionElement = screen.getAllByText('Filter By Region')[0].closest('.Dropdown-control');
+    expect(screen.getAllByRole('document')).toHaveLength(5);
+    fireEvent.mouseDown(regionElement);
+    await waitFor(async () => {
+      const europeFilter = screen.getByText('Europe');
+      fireEvent.click(europeFilter);
+
+      await waitFor(() => {
+        expect(screen.getAllByRole('document')).toHaveLength(1);
+      });
+    });
+  });
+});
+
+test('should be able to filter the countries inside document (mobile)', async () => {
+  await act(async () => {
+    render(<Provider><App /></Provider>);
+  });
+  await waitFor(async () => {
+    const regionElement = screen.getAllByText('Filter By Region')[1].closest('.Dropdown-control');
     expect(screen.getAllByRole('document')).toHaveLength(5);
     fireEvent.mouseDown(regionElement);
     await waitFor(async () => {
