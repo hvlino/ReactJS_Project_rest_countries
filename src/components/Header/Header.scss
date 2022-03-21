@@ -1,0 +1,36 @@
+@media only screen and (min-width: 600px) {
+  .Header {
+    padding: 20px 50px !important;
+
+    .title {
+      font-size: 20px !important;
+    } 
+  }
+}
+.Header {
+
+  background-color: #fff;
+  border-bottom: 2px solid rgb(219, 214, 214);
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 20px;
+  
+
+  // mobile
+  // padding: 30px 20px;
+
+  // desktop
+  .title {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .theme {
+    font-weight: 600;
+  }
+
+  .theme-icon {
+    vertical-align: middle;
+    padding-right: 7px;
+  }
+}

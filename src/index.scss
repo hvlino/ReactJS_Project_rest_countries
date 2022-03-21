@@ -4,9 +4,14 @@ body {
   background-color: rgb(240, 240, 240);
   margin: 0;
   font-family: 'Nunito Sans', sans-serif;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Nunito Sans', sans-serif;
 }

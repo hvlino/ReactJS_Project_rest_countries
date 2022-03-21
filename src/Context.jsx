@@ -9,8 +9,8 @@ export const Context = createContext('');
 export default function ctx({ children }) {
   const [countries, setCountries] = useState([]);
   const [activeFilter, setActiveFilter] = useState('All');
-  const loadCountries = async () => {
-    const results = await getCountries();
+  const loadCountries = async (signal) => {
+    const results = await getCountries(signal);
     return results;
   };
 

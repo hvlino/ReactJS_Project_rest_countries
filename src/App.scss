@@ -1,28 +1,24 @@
 .App {
-  .Header {
-    background-color: #fff;
-    border-bottom: 2px solid rgb(219, 214, 214);
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 60px;
-  }
 
-  .title {
-    font-weight: bold;
-    font-size: 18px;
-  }
-
-  .theme {
-    font-weight: 600;
-    display: flex;
-    width: 9%;
-    justify-content: space-between;
+  @media only screen and (min-width: 600px) {
+    .filters-mobile {
+      display: none !important;
+    }
+    .filters-desktop {
+      display: block !important;
+    }
+    .search-n-filter {
+      padding: 20px 50px !important;
+    }
+    .search-bar {
+      width: 350px !important;
+    }
   }
 
   .search-n-filter {
     display: flex;
     justify-content: space-between;
-    padding: 15px 60px;
+    padding: 30px 20px;
   }
 
   .search-icon {
@@ -31,10 +27,14 @@
     margin-left: 18px;
   }
 
+  .search-input {
+    width: 100%;
+  }
+
   .search-bar {
     outline: none;
     border: none;
-    width: 350px;
+    width: calc(100vw - 91px);
     height: 45px;
     padding-left: 50px;
     border-radius: 7px;
@@ -49,6 +49,14 @@
     box-shadow: -1px 12px 24px -17px #C4C4C4;
   }
 
+  .filters-desktop {
+    display: none;
+  }
+
+  .filters-mobile {
+    padding: 10px 20px;
+  }
+
   .Dropdown-control {
     display: flex;
     justify-content: space-between;
@@ -61,6 +69,8 @@
     border-radius: 7px;
     height: 50px;
     border: none;
+    -webkit-box-shadow: -1px 12px 24px -17px #C4C4C4; 
+    box-shadow: -1px 12px 24px -17px #C4C4C4;
   }
   
   .Dropdown-option {
@@ -88,48 +98,13 @@
   }
 
   .container {
-    display: grid;
-    width: 1300px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding-left: 47px;
+    display: grid;  
+    grid-template-columns: repeat(auto-fit, minmax(226px, 1fr));
+    gap: 40px;
+    max-width: calc(100vw - 80px);
+    margin: auto;
+    padding: 20px 50px;
+
   }
 
-  .card {
-    margin-top: 35px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    width: 270px;
-  }
-
-  .card-header img {
-    width: 100%;
-    object-fit: fill;
-  }
-
-  .country-image {
-    height: 202px;
-  }
-
-  .country-name {
-    font-size: 20px;
-    font-weight: 800;
-  }
-
-  .info-numbers {
-    font-weight: 600;
-  }
-
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px;
-  }
-
-  .card-body p {
-    font-size: 16px;
-  }
 }
