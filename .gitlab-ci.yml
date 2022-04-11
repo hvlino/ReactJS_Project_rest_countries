@@ -1,0 +1,72 @@
+image: node:16.13.2
+
+stages:
+  - install
+  - code_quality
+  - test
+  - build
+  - pages
+
+install:
+  stage: install
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+  cache: 
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - node_modules/
+  script:
+    - npm install
+
+eslint:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+  stage: code_quality
+  cache: 
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - node_modules/
+    policy: pull
+  script:
+    - npm run eslint -- --ext .jsx,.js src/
+
+unit_tests:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+  stage: test
+  cache: 
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - node_modules/
+    policy: pull
+  script:
+    - npm test
+
+react_build:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+  stage: build
+  cache: 
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - node_modules/
+    policy: pull
+  script:
+    - npm run-script build
+  artifacts:
+    paths:
+    - build/
+
+pages:
+  image: alpine:latest
+  stage: pages
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - mv build public         
+  artifacts:
+    paths:
+      - public
+
