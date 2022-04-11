@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-plusplus */
@@ -28,7 +29,7 @@ const Card = function Card({ country }) {
 
   return (
     <div className="card" key={country.name.common} onClick={navigate} role="document">
-      <div className="card-header">
+      <div className="card-header" dell="black">
         <img src={country.flags.svg} alt={country.name.common} className="country-image" />
       </div>
       <div className="card-body">
