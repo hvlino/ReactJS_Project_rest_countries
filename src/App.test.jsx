@@ -5,18 +5,23 @@ import {
   fireEvent, render, screen, waitFor,
 } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import { createMemoryHistory } from 'history';
-import { Router } from 'react-router-dom';
+import {
+  MemoryRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
 import App from './App';
 import CountryInfo from './components/CountryInfo/CountryInfo';
 import Provider from './Context';
+import '@testing-library/jest-dom';
 
 const countries = require('./mocks/countries.json');
+const germanyJson = require('./mocks/germany.json');
 
 const handles = [
   rest.get('https://restcountries.com/v3.1/all', (req, res, ctx) => res(ctx.json(countries))),
   rest.get('https://restcountries.com/v3.1/name/cuba', (req, res, ctx) => res(ctx.json([countries[5]]))),
-  rest.get('https://restcountries.com/v3.1/name/germany', (req, res, ctx) => res(ctx.json([countries[0]]))),
+  rest.get('https://restcountries.com/v3.1/name/germany', (req, res, ctx) => res(ctx.json(germanyJson))),
 ];
 
 const server = setupServer(...handles);
@@ -118,19 +123,18 @@ test('should be able to click the country card', async () => {
 
 test('should be able to view the details page', async () => {
   await act(async () => {
-    const history = createMemoryHistory();
-    const route = '/countries/germany';
-    history.push(route);
     render(
-      <Router history={history}>
+      <Router initialEntries={['/countries/germany']}>
         <Provider>
-          <CountryInfo />
+          <Routes>
+            <Route path="/countries/:country" element={<CountryInfo />} />
+          </Routes>
         </Provider>
       </Router>,
     );
   });
   await waitFor(async () => {
-    const [germany] = screen.getByText('Germany');
+    const germany = screen.getByText('Deutschland');
     expect(germany).toBeInTheDocument();
   });
 });

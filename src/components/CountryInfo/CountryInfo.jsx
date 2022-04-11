@@ -109,7 +109,7 @@ const CountryInfo = function CountryInfo() {
             {targetCountry.borders.length > 0 && (
             <div className="border-countries">
               <strong><span>Border Countries:</span></strong>
-              {targetCountry.borders.map((code) => <CountryBorder code={code} />) }
+              {targetCountry.borders.map((code) => <CountryBorder code={code} key={code} />) }
             </div>
             )}
           </div>
