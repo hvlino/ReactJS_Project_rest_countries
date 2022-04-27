@@ -34,7 +34,7 @@ test('should be able to get the theme text', async () => {
   await act(async () => {
     render(<Provider><App /></Provider>);
   });
-  const linkElement = screen.getByText('Dark Mode');
+  const linkElement = screen.getByText('Light Mode');
   expect(linkElement).toBeInTheDocument();
 });
 
@@ -139,66 +139,9 @@ test('should be able to view the details page', async () => {
   });
 });
 
-// test('should be able to exit the details page', async () => {
-//   await act(async () => {
-//     render(<Provider><App /></Provider>);
-//   });
-//   await waitFor(async () => {
-//     const germany = screen.getByText('Germany');
-//     expect(germany).toBeInTheDocument();
-//     fireEvent.click(germany);
-//     await waitFor(async () => {
-//       const brazil = screen.queryByText('Brazil');
-//       expect(brazil).not.toBeInTheDocument();
-//       const nativeName = screen.getByText('Native Name:');
-//       expect(nativeName).toBeInTheDocument();
-//       const backButton = screen.getByText('Back');
-//       expect(backButton).toBeInTheDocument();
-//       fireEvent.click(backButton);
-//       await waitFor(() => {
-//         const brazil2 = screen.getByText('Brazil');
-//         expect(brazil2).toBeInTheDocument();
-//       });
-//     });
-//   });
-// });
-
-// test('should be able to see the url change', async () => {
-//   await act(async () => {
-//     render(<Provider><App /></Provider>);
-//   });
-//   await waitFor(() => {
-//     global.window = { location: { pathname: null } };
-//     window.location.pathname = document;
-//     const germany = screen.getByText('Germany');
-//     expect(germany).toBeInTheDocument();
-//     fireEvent.click(germany);
-//     const brazil = screen.queryByText('Brazil');
-//     expect(brazil).not.toBeInTheDocument();
-//     const nativeName = screen.getByText('Native Name:');
-//     expect(nativeName).toBeInTheDocument();
-//     expect(window.location.pathname).toEqual('/countries/germany');
-//   });
-// });
-
-// test('should be able to check for a country with no borders', async () => {
-//   await act(async () => {
-//     render(<Provider><App /></Provider>);
-//   });
-//   await waitFor(async () => {
-//     const germany = screen.queryByText('Germany');
-//     expect(germany).toBeInTheDocument();
-//     await waitFor(() => {
-//       const backButton = screen.getByText('Back');
-//       expect(backButton).toBeInTheDocument();
-//       fireEvent.click(backButton);
-//       const cuba = screen.getByText('Cuba');
-//       expect(cuba).toBeInTheDocument();
-//       fireEvent.click(cuba);
-//     });
-//     const nativeName = screen.getByText('Native Name:');
-//     const borders = screen.queryByText('Border Countries:');
-//     expect(nativeName).toBeInTheDocument();
-//     expect(borders).not.toBeInTheDocument();
-//   });
-// });
+test('should click on theme button change theme', async () => {
+  render(<Provider><App /></Provider>);
+  const themeButton = screen.getByText('Light Mode');
+  fireEvent.click(themeButton);
+  expect(screen.getByText('Dark Mode')).toBeInTheDocument();
+});

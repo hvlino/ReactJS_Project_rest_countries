@@ -9,6 +9,7 @@ export const Context = createContext('');
 export default function ctx({ children }) {
   const [countries, setCountries] = useState([]);
   const [activeFilter, setActiveFilter] = useState('All');
+  const [theme, setTheme] = useState('light');
 
   const loadCountries = async (signal) => {
     const results = await getCountries(signal);
@@ -46,6 +47,9 @@ export default function ctx({ children }) {
     }
     return countries.filter((country) => country.name.common.includes(name));
   };
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values = {
@@ -58,6 +62,8 @@ export default function ctx({ children }) {
     filteredCountries,
     filterCountryList,
     loadTargetCountry,
+    theme,
+    toggleTheme,
   };
 
   // loadCountries();
