@@ -99,7 +99,7 @@
 
   .container {
     display: grid;  
-    grid-template-columns: repeat(auto-fit, minmax(226px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(226px, 1fr));
     gap: 40px;
     max-width: calc(100vw - 80px);
     margin: auto;
