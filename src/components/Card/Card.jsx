@@ -1,10 +1,16 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-plusplus */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import './Card.scss';
 
 // eslint-disable-next-line import/prefer-default-export
 const Card = function Card({ country }) {
+  const history = useNavigate();
+
   const dotto = (num) => {
     const val = num.toString();
     let final = val[0];
@@ -17,10 +23,14 @@ const Card = function Card({ country }) {
     return final;
   };
 
+  const navigate = () => {
+    history(`/countries/${country.name.common.toLowerCase()}`);
+  };
+
   return (
-    <div className="card" key={country.name.common} role="document">
-      <div className="card-header">
-        <img src={country.flags.png} alt={country.name.common} className="country-image" />
+    <div className="card" key={country.name.common} onClick={navigate} role="document">
+      <div className="card-header" dell="black">
+        <img src={country.flags.svg} alt={country.name.common} className="country-image" />
       </div>
       <div className="card-body">
         <div className="country-name">{country.name.common}</div>
