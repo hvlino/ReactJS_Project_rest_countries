@@ -24,12 +24,22 @@
     font-size: 16px;
   }
 
-  .theme {
-    font-weight: 600;
-  }
-
   .theme-icon {
+    font-weight: 600;
     vertical-align: middle;
     padding-right: 7px;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+
+    svg {
+      width: 22px;
+      height: 22px;
+      margin-right: 6px;
+    }
+
+    span {
+      white-space: nowrap;
+    }
   }
 }
