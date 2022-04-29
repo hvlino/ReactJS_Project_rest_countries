@@ -6,6 +6,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import './Card.scss';
+import styled from 'styled-components';
+
+const StyledCard = styled.div`
+  background-color: #2b3743;
+  color:white;
+`;
 
 // eslint-disable-next-line import/prefer-default-export
 const Card = function Card({ country }) {
@@ -28,7 +34,7 @@ const Card = function Card({ country }) {
   };
 
   return (
-    <div className="card" key={country.name.common} onClick={navigate} role="document">
+    <StyledCard className="card" key={country.name.common} onClick={navigate} role="document">
       <div className="card-header" dell="black">
         <img src={country.flags.svg} alt={country.name.common} className="country-image" />
       </div>
@@ -52,7 +58,7 @@ const Card = function Card({ country }) {
           </div>
         </div>
       </div>
-    </div>
+    </StyledCard>
   );
 };
 
