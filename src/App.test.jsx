@@ -22,6 +22,7 @@ const handles = [
   rest.get('https://restcountries.com/v3.1/all', (req, res, ctx) => res(ctx.json(countries))),
   rest.get('https://restcountries.com/v3.1/name/cuba', (req, res, ctx) => res(ctx.json([countries[5]]))),
   rest.get('https://restcountries.com/v3.1/name/germany', (req, res, ctx) => res(ctx.json(germanyJson))),
+  rest.get('https://restcountries.com/v3.1/name/*', (req, res, ctx) => res(ctx.json([]))),
 ];
 
 const server = setupServer(...handles);
@@ -144,4 +145,12 @@ test('should click on theme button change theme', async () => {
   const themeButton = screen.getByText('Light Mode');
   fireEvent.click(themeButton);
   expect(screen.getByText('Dark Mode')).toBeInTheDocument();
+});
+
+test('should use sun when in light mode and moon when in dark mode', async () => {
+  const { container } = render(<Provider><App /></Provider>);
+  const themeButton = screen.getByText('Light Mode');
+  expect(container.querySelector('svg').innerHTML).toBe('sun-regular.svg');
+  fireEvent.click(themeButton);
+  expect(container.querySelector('svg').innerHTML).toBe('moon-regular.svg');
 });
