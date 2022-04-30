@@ -17,10 +17,11 @@ import '@testing-library/jest-dom';
 
 const countries = require('./mocks/countries.json');
 const germanyJson = require('./mocks/germany.json');
+const cubaJson = require('./mocks/cuba.json');
 
 const handles = [
   rest.get('https://restcountries.com/v3.1/all', (req, res, ctx) => res(ctx.json(countries))),
-  rest.get('https://restcountries.com/v3.1/name/cuba', (req, res, ctx) => res(ctx.json([countries[5]]))),
+  rest.get('https://restcountries.com/v3.1/name/cuba', (req, res, ctx) => res(ctx.json(cubaJson))),
   rest.get('https://restcountries.com/v3.1/name/germany', (req, res, ctx) => res(ctx.json(germanyJson))),
   rest.get('https://restcountries.com/v3.1/name/*', (req, res, ctx) => res(ctx.json([]))),
 ];
@@ -153,4 +154,22 @@ test('should use sun when in light mode and moon when in dark mode', async () =>
   expect(container.querySelector('svg').innerHTML).toBe('sun-regular.svg');
   fireEvent.click(themeButton);
   expect(container.querySelector('svg').innerHTML).toBe('moon-regular.svg');
+});
+
+test('should be able to view the details page of a border with no countries', async () => {
+  await act(async () => {
+    render(
+      <Router initialEntries={['/countries/cuba']}>
+        <Provider>
+          <Routes>
+            <Route path="/countries/:country" element={<CountryInfo />} />
+          </Routes>
+        </Provider>
+      </Router>,
+    );
+  });
+  await waitFor(async () => {
+    const capital = screen.queryByText('Havana');
+    expect(capital).toBeInTheDocument();
+  });
 });
