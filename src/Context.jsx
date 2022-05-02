@@ -24,8 +24,6 @@ export default function ctx({ children }) {
 
   const options = useMemo(() => {
     const regions = [];
-    // eslint-disable-next-line no-debugger
-    debugger;
     for (let i = 0; i < countries.length; i++) {
       if (!regions.includes(countries[i].region)) {
         regions.push(countries[i].region);
