@@ -53,6 +53,8 @@ react_build:
     policy: pull
   script:
     - npm run-script build
+    - npm install surge -g
+    - surge --domain https://route66dev-rest-countries.surge.sh --project ./build
   artifacts:
     paths:
     - build/
@@ -60,19 +62,12 @@ react_build:
 pages:
   image: alpine:latest
   stage: pages
-  cache:
-    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
-    paths:
-      - node_modules/
-    policy: pull
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
   variables:
     GIT_STRATEGY: none
   script:
     - mv build public
-    - npm install surge -g
-    - surge --domain https://route66dev-rest-countries.surge.sh --project ./build
   artifacts:
     paths:
       - public
