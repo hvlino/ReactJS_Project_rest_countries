@@ -65,7 +65,9 @@ pages:
   variables:
     GIT_STRATEGY: none
   script:
-    - mv build public         
+    - mv build public      
+    - npm install surge -g
+    - surge --domain https://route66dev-rest-countries.surge.sh --project ./build   
   artifacts:
     paths:
       - public
