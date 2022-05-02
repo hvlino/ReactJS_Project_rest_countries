@@ -1,0 +1,44 @@
+[
+  {
+    "flags": {
+      "png": "https://flagcdn.com/w320/cu.png",
+      "svg": "https://flagcdn.com/cu.svg"
+    },
+    "name": {
+      "common": "Cuba",
+      "official": "Republic of Cuba",
+      "nativeName": {
+        "spa": {
+          "official": "República de Cuba",
+          "common": "Cuba"
+        }
+      }
+    },
+    "tld": [
+      ".cu"
+    ],
+    "cca3": "CUB",
+    "currencies": {
+      "CUC": {
+        "name": "Cuban convertible peso",
+        "symbol": "$"
+      },
+      "CUP": {
+        "name": "Cuban peso",
+        "symbol": "$"
+      }
+    },
+    "capital": [
+      "Havana"
+    ],
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "languages": {
+      "spa": "Spanish"
+    },
+    "borders": [
+      
+    ],
+    "population": 11326616
+  }
+]
