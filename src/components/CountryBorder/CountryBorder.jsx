@@ -29,7 +29,7 @@ const CountryBorder = function CountryBorder({ code }) {
   }, []);
 
   const BordersDiv = styled.div`
-  .borderLink {    
+  a {
     background: ${(props) => props.theme[props.currenttheme].secondaryBackground};
     color: ${(props) => props.theme[props.currenttheme].primaryText};
     box-shadow: ${(props) => props.theme[props.currenttheme].shadow};
@@ -38,7 +38,7 @@ const CountryBorder = function CountryBorder({ code }) {
 
   return country ? (
     <BordersDiv currenttheme={theme}>
-      <Link className="borderLink" to={`/countries/${country.name.common.toLowerCase()}`}>
+      <Link currenttheme={theme} to={`/countries/${country.name.common.toLowerCase()}`}>
         {country.name.common}
       </Link>
     </BordersDiv>
