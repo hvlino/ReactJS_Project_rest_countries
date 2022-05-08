@@ -23,24 +23,7 @@
         width: 120px;
         -webkit-box-shadow: 5px 5px 17px 4px rgba(156, 156, 156, 0.53);
         box-shadow: 5px 5px 17px 4px rgba(156, 156, 156, 0.53);
-
-        .left-arrow {
-          width: 20px;
-          padding-right: 10px;
-        }
-      }
-
-      .image-and-info {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(226px, 1fr));
-        gap: 0 150px;
-
-        .country-image {
-          width: 100%;
-        }
-
         .details-columns {
-          display: grid;
           grid-template-columns: repeat(auto-fit, minmax(226px, 1fr));
           gap: 0 30px;
           padding-bottom: 70px;

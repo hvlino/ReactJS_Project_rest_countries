@@ -11,7 +11,7 @@ install:
   stage: install
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-  cache: 
+  cache:
     key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
     paths:
       - node_modules/
@@ -22,7 +22,7 @@ eslint:
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
   stage: code_quality
-  cache: 
+  cache:
     key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
     paths:
       - node_modules/
@@ -34,7 +34,7 @@ unit_tests:
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
   stage: test
-  cache: 
+  cache:
     key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
     paths:
       - node_modules/
@@ -46,13 +46,15 @@ react_build:
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
   stage: build
-  cache: 
+  cache:
     key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
     paths:
       - node_modules/
     policy: pull
   script:
     - npm run-script build
+    - npm install surge -g
+    - surge --domain https://route66dev-rest-countries.surge.sh --project ./build
   artifacts:
     paths:
     - build/
@@ -65,7 +67,7 @@ pages:
   variables:
     GIT_STRATEGY: none
   script:
-    - mv build public         
+    - mv build public
   artifacts:
     paths:
       - public

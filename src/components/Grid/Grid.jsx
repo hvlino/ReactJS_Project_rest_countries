@@ -29,6 +29,9 @@ const GridDiv = styled.div`
   .Dropdown-control {
     box-shadow: ${(props) => props.theme[props.currenttheme].shadow};
   }
+  .Dropdown-option:hover {
+        background-color: ${(props) => props.theme[props.currenttheme].hover};
+      }
 `;
 
 export function Grid() {
