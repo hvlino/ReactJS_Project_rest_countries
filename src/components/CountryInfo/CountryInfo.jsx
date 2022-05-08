@@ -74,7 +74,15 @@ const CountryInfo = function CountryInfo() {
     box-shadow: ${(props) => props.theme[props.currenttheme].shadow};
   }
   `;
-  // baixar a imagem e deixar no projeto
+
+  const BordersDiv = styled.div`
+  a {
+    background: ${(props) => props.theme[props.currenttheme].secondaryBackground};
+    color: ${(props) => props.theme[props.currenttheme].primaryText};
+    box-shadow: ${(props) => props.theme[props.currenttheme].shadow};
+  }
+  `;
+
   return (targetCountry === null ? <h1>Loading...</h1>
     : (
       <DetailsDiv className="globalDiv" currenttheme={theme}>
@@ -138,7 +146,9 @@ const CountryInfo = function CountryInfo() {
             <div className="border-countries">
               <strong><span>Border Countries:</span></strong>
               {targetCountry.borders.map((code) => (
-                <CountryBorder code={code} key={code} />
+                <BordersDiv currenttheme={theme}>
+                  <CountryBorder code={code} key={code} />
+                </BordersDiv>
               )) }
             </div>
             )}
