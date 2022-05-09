@@ -7,6 +7,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Context } from '../../Context';
 import CountryBorder from '../CountryBorder/CountryBorder';
 import './CountryInfo.scss';
+import Spinner from '../Spinner/spinner';
 
 // eslint-disable-next-line import/prefer-default-export
 const CountryInfo = function CountryInfo() {
@@ -47,7 +48,9 @@ const CountryInfo = function CountryInfo() {
     return final;
   };
 
-  return (targetCountry === null ? <h1>Loading...</h1>
+  return (targetCountry === null ? (
+    <Spinner />
+  )
     : (
       <div className="globalDiv">
         <button type="button" onClick={navigate} className="backButton" data-testid="backButton">
