@@ -5,6 +5,7 @@
 }
 
   .globalDiv {
+    animation: fadeIn 0.8s ease;
     padding: 20px 20px;
     background-color: rgb(240, 240, 240);
 
@@ -90,3 +91,13 @@
         }
       }
   }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
