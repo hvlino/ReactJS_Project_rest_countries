@@ -3,6 +3,10 @@
     overflow: hidden;
     max-width: 300px;
     cursor: pointer;
+    transition: ease-in-out 200ms transform;
+    &:hover {
+      transform: scale(1.05);
+    }
 
     .card-header img {
         width: 100%;
