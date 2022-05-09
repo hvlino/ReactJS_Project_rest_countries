@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom';
 import React from 'react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
@@ -10,10 +11,11 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 import App from './App';
 import CountryInfo from './components/CountryInfo/CountryInfo';
 import Provider from './Context';
-import '@testing-library/jest-dom';
+import theme from './theme';
 
 const countries = require('./mocks/countries.json');
 const germanyJson = require('./mocks/germany.json');
@@ -127,11 +129,13 @@ test('should be able to view the details page', async () => {
   await act(async () => {
     render(
       <Router initialEntries={['/countries/germany']}>
-        <Provider>
-          <Routes>
-            <Route path="/countries/:country" element={<CountryInfo />} />
-          </Routes>
-        </Provider>
+        <ThemeProvider theme={theme}>
+          <Provider>
+            <Routes>
+              <Route path="/countries/:country" element={<CountryInfo />} />
+            </Routes>
+          </Provider>
+        </ThemeProvider>
       </Router>,
     );
   });
@@ -160,11 +164,13 @@ test('should be able to view the details page of a border with no countries', as
   await act(async () => {
     render(
       <Router initialEntries={['/countries/cuba']}>
-        <Provider>
-          <Routes>
-            <Route path="/countries/:country" element={<CountryInfo />} />
-          </Routes>
-        </Provider>
+        <ThemeProvider theme={theme}>
+          <Provider>
+            <Routes>
+              <Route path="/countries/:country" element={<CountryInfo />} />
+            </Routes>
+          </Provider>
+        </ThemeProvider>
       </Router>,
     );
   });
