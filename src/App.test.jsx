@@ -136,7 +136,7 @@ test('should be able to view the details page', async () => {
     );
   });
   await waitFor(async () => {
-    const germany = screen.getByText('Loading...');
+    const germany = screen.getByText('Deutschland');
     expect(germany).toBeInTheDocument();
   });
 });

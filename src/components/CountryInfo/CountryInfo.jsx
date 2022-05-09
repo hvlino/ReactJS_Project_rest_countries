@@ -79,6 +79,7 @@ const CountryInfo = function CountryInfo() {
   a {
     background: ${(props) => props.theme[props.currenttheme].secondaryBackground};
     color: ${(props) => props.theme[props.currenttheme].primaryText};
+    -webkit-box-shadow: ${(props) => props.theme[props.currenttheme].shadow};
     box-shadow: ${(props) => props.theme[props.currenttheme].shadow};
   }
   `;
