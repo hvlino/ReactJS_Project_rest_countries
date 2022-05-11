@@ -72,3 +72,10 @@ pages:
     paths:
       - public
 
+surge_publish:
+  stage: pages
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+  script:
+    - npm install surge -g
+    - surge --domain https://route66dev-rest-countries.surge.sh --project ./build
