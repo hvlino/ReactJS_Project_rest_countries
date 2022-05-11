@@ -50,7 +50,7 @@ export default function ctx({ children }) {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
-  const values = useMemo({
+  const values = useMemo(() => ({
     countries,
     loadCountries,
     setCountries,
@@ -62,7 +62,7 @@ export default function ctx({ children }) {
     loadTargetCountry,
     theme,
     toggleTheme,
-  }, []);
+  }), []);
 
   // loadCountries();
   return (
