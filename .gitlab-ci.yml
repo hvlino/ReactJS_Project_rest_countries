@@ -11,6 +11,7 @@ install:
   stage: install
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: '$CI_COMMIT_REF_NAME == "main"'
   cache:
     key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
     paths:
@@ -45,6 +46,7 @@ unit_tests:
 react_build:
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: '$CI_COMMIT_REF_NAME == "main"'
   stage: build
   cache:
     key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
@@ -53,8 +55,6 @@ react_build:
     policy: pull
   script:
     - npm run-script build
-    - npm install surge -g
-    - surge --domain https://route66dev-rest-countries.surge.sh --project ./build
   artifacts:
     paths:
     - build/
@@ -75,7 +75,12 @@ pages:
 surge_publish:
   stage: pages
   rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"'
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - node_modules/
+    policy: pull
   script:
     - npm install surge -g
     - surge --domain https://route66dev-rest-countries.surge.sh --project ./build

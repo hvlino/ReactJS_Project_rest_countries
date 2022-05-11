@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Dropdown from 'react-dropdown';
@@ -29,6 +28,10 @@ const GridDiv = styled.div`
   }
   .Dropdown-control {
     box-shadow: ${(props) => props.theme[props.currenttheme].shadow};
+    &:hover {
+      background-color: ${(props) => props.theme[props.currenttheme].hovercontrol};
+      transition: background-color 500ms linear;
+    }
   }
   .Dropdown-option:hover {
         background-color: ${(props) => props.theme[props.currenttheme].hover};
@@ -55,10 +58,9 @@ export function Grid() {
       try {
         const countryArray = await loadCountries(controller.signal);
         setCountries(countryArray);
+        setIsLoading(false);
       } catch (e) {
         controller.abort();
-      } finally {
-        setIsLoading(false);
       }
     };
     fetchData();
