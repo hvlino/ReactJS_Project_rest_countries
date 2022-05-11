@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Dropdown from 'react-dropdown';

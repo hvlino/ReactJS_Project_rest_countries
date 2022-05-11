@@ -1,7 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable no-plusplus */
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -15,7 +11,6 @@ const StyledCard = styled.div`
   box-shadow: ${(props) => props.theme[props.currenttheme].shadow};
 `;
 
-// eslint-disable-next-line import/prefer-default-export
 const Card = function Card({ country }) {
   const {
     theme,
@@ -26,7 +21,7 @@ const Card = function Card({ country }) {
     const val = num.toString();
     let final = val[0];
 
-    for (let i = 1; i < val.length; i++) {
+    for (let i = 1; i < val.length; i += 1) {
       if ((val.length - i) % 3 === 0) { final += ','; }
       final += val[i];
     }
@@ -68,8 +63,7 @@ const Card = function Card({ country }) {
 };
 
 Card.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  country: PropTypes.object.isRequired,
+  country: PropTypes.shape.isRequired,
 };
 
 export default Card;

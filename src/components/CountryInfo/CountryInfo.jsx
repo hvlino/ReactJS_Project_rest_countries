@@ -1,15 +1,10 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Context } from '../../Context';
 import CountryBorder from '../CountryBorder/CountryBorder';
 import './CountryInfo.scss';
 import Spinner from '../Spinner/spinner';
 
-// eslint-disable-next-line import/prefer-default-export
 const CountryInfo = function CountryInfo() {
   const [targetCountry, setTargetCountry] = useState(null);
   const { country } = useParams();
@@ -18,7 +13,7 @@ const CountryInfo = function CountryInfo() {
     history('/');
   };
 
-  const { loadTargetCountry, countries } = useContext(Context);
+  const { loadTargetCountry } = useContext(Context);
 
   const controller = new AbortController();
   useEffect(() => {
@@ -40,7 +35,7 @@ const CountryInfo = function CountryInfo() {
     const val = num.toString();
     let final = val[0];
 
-    for (let i = 1; i < val.length; i++) {
+    for (let i = 1; i < val.length; i += 1) {
       if ((val.length - i) % 3 === 0) { final += ','; }
       final += val[i];
     }

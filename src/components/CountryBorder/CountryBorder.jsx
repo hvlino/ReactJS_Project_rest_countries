@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-// <Link to={`/countries/${borderCountry}`}>{borderCountry}</Link>
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -28,7 +26,7 @@ const CountryBorder = function CountryBorder({ code }) {
 };
 
 CountryBorder.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
+
   code: PropTypes.string.isRequired,
 };
 
