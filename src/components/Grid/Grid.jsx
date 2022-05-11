@@ -16,8 +16,14 @@ const GridDiv = styled.div`
   input::placeholder {
     color: ${(props) => props.theme[props.currenttheme].primaryText};
     }
+  input:focus {
+    background: ${(props) => props.theme[props.currenttheme].onFocus};
+  }
   .search-bar {
     box-shadow: ${(props) => props.theme[props.currenttheme].shadow};
+  }
+  .search-bar:focus {
+    box-shadow: ${(props) => props.theme[props.currenttheme].focusShadow};
   }
   .Dropdown-control, .Dropdown-menu, .Dropdown-option {
     background: ${(props) => props.theme[props.currenttheme].primaryBackground};
