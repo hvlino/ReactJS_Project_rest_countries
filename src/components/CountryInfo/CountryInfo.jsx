@@ -1,9 +1,36 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import { Context } from '../../Context';
 import CountryBorder from '../CountryBorder/CountryBorder';
 import './CountryInfo.scss';
 import Spinner from '../Spinner/spinner';
+
+const DetailsDiv = styled.div`
+background: ${(props) => props.theme[props.currenttheme].secondaryBackground};
+color: ${(props) => props.theme[props.currenttheme].primaryText};
+input {
+  background: ${(props) => props.theme[props.currenttheme].primaryBackground};
+  color: ${(props) => props.theme[props.currenttheme].primaryText};
+}
+input::placeholder {
+  color: ${(props) => props.theme[props.currenttheme].primaryText};
+  }
+.search-bar {
+  box-shadow: ${(props) => props.theme[props.currenttheme].shadow};
+}
+.backButton {
+  background: ${(props) => props.theme[props.currenttheme].primaryBackground};
+  box-shadow: ${(props) => props.theme[props.currenttheme].shadow};
+  color: ${(props) => props.theme[props.currenttheme].primaryText};
+}
+.Dropdown-control img {
+  filter: invert();
+}
+.Dropdown-control {
+  box-shadow: ${(props) => props.theme[props.currenttheme].shadow};
+}
+`;
 
 const CountryInfo = function CountryInfo() {
   const [targetCountry, setTargetCountry] = useState(null);
@@ -13,7 +40,7 @@ const CountryInfo = function CountryInfo() {
     history('/');
   };
 
-  const { loadTargetCountry } = useContext(Context);
+  const { loadTargetCountry, theme } = useContext(Context);
 
   const controller = new AbortController();
   useEffect(() => {
@@ -47,7 +74,7 @@ const CountryInfo = function CountryInfo() {
     <Spinner />
   )
     : (
-      <div className="globalDiv">
+      <DetailsDiv className="globalDiv" currenttheme={theme}>
         <button type="button" onClick={navigate} className="backButton" data-testid="backButton">
           <img alt="left-arrow" src="https://www.svgrepo.com/show/126221/left-arrow.svg" className="left-arrow" />
           Back
@@ -107,12 +134,14 @@ const CountryInfo = function CountryInfo() {
             {targetCountry.borders.length > 0 && (
             <div className="border-countries">
               <strong><span>Border Countries:</span></strong>
-              {targetCountry.borders.map((code) => <CountryBorder code={code} key={code} />) }
+              {targetCountry.borders.map((code) => (
+                <CountryBorder code={code} key={code} />
+              )) }
             </div>
             )}
           </div>
         </div>
-      </div>
+      </DetailsDiv>
     )
   );
 };
