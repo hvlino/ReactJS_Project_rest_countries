@@ -177,5 +177,7 @@ test('should be able to view the details page of a border with no countries', as
   await waitFor(async () => {
     const capital = screen.queryByText('Havana');
     expect(capital).toBeInTheDocument();
+    const borders = screen.queryByText('Border Countries');
+    expect(borders).not.toBeInTheDocument();
   });
 });
