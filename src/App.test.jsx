@@ -115,9 +115,7 @@ test('should be able to search for some countries inside document', async () => 
 });
 
 test('should be able to click the country card', async () => {
-  await act(async () => {
-    render(<Provider><App /></Provider>);
-  });
+  render(<Provider><App /></Provider>);
   await waitFor(async () => {
     const [germany] = screen.getAllByRole('document');
     expect(germany).toBeInTheDocument();
@@ -177,5 +175,7 @@ test('should be able to view the details page of a border with no countries', as
   await waitFor(async () => {
     const capital = screen.queryByText('Havana');
     expect(capital).toBeInTheDocument();
+    const borders = screen.queryByText('Border Countries');
+    expect(borders).not.toBeInTheDocument();
   });
 });

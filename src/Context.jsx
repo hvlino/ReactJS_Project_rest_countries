@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 import React, {
   createContext, useState, useMemo,
 } from 'react';
@@ -24,9 +23,7 @@ export default function ctx({ children }) {
 
   const options = useMemo(() => {
     const regions = [];
-    // eslint-disable-next-line no-debugger
-    debugger;
-    for (let i = 0; i < countries.length; i++) {
+    for (let i = 0; i < countries.length; i += 1) {
       if (!regions.includes(countries[i].region)) {
         regions.push(countries[i].region);
       }
@@ -53,8 +50,7 @@ export default function ctx({ children }) {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
-  const values = {
+  const value = {
     countries,
     loadCountries,
     setCountries,
@@ -68,9 +64,8 @@ export default function ctx({ children }) {
     toggleTheme,
   };
 
-  // loadCountries();
   return (
-    <Context.Provider value={values}>
+    <Context.Provider value={value}>
       {children}
     </Context.Provider>
   );

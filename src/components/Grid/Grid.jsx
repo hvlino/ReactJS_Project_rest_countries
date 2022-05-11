@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Dropdown from 'react-dropdown';
@@ -59,10 +58,9 @@ export function Grid() {
       try {
         const countryArray = await loadCountries(controller.signal);
         setCountries(countryArray);
+        setIsLoading(false);
       } catch (e) {
         controller.abort();
-      } finally {
-        setIsLoading(false);
       }
     };
     fetchData();
