@@ -54,10 +54,9 @@ export function Grid() {
       try {
         const countryArray = await loadCountries(controller.signal);
         setCountries(countryArray);
+        setIsLoading(false);
       } catch (e) {
         controller.abort();
-      } finally {
-        setIsLoading(false);
       }
     };
     fetchData();

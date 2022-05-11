@@ -50,7 +50,7 @@ export default function ctx({ children }) {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
-  const values = useMemo(() => ({
+  const value = {
     countries,
     loadCountries,
     setCountries,
@@ -62,11 +62,10 @@ export default function ctx({ children }) {
     loadTargetCountry,
     theme,
     toggleTheme,
-  }), []);
+  };
 
-  // loadCountries();
   return (
-    <Context.Provider value={values}>
+    <Context.Provider value={value}>
       {children}
     </Context.Provider>
   );

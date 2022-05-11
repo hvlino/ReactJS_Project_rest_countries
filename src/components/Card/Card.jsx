@@ -63,7 +63,7 @@ const Card = function Card({ country }) {
 };
 
 Card.propTypes = {
-  country: PropTypes.shape.isRequired,
+  country: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 export default Card;

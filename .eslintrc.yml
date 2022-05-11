@@ -17,6 +17,7 @@ plugins:
 rules:
   react/jsx-filename-extension: 0
   import/prefer-default-export: 0
+  react/jsx-no-constructed-context-values: 0
   "eslint-comments/disable-enable-pair": "error"
   "eslint-comments/no-duplicate-disable": "error"
   "eslint-comments/no-unlimited-disable": "error"
