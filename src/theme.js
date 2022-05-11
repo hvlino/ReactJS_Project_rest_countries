@@ -4,7 +4,8 @@ export default {
     secondaryBackground: '#202d36',
     primaryText: '#FFF',
     shadow: '-1px 12px 24px -17px #000',
-    hover: '#0002A3',
+    hover: '#1F4E7A',
+    hovercontrol: '#334352',
   },
   light: {
     primaryBackground: '#fafafa',
@@ -12,5 +13,6 @@ export default {
     primaryText: '#000',
     shadow: '-1px 12px 24px -17px #AAAAAA',
     hover: '#D2FDFF',
+    hovercontrol: '#F1F1F1',
   },
 };

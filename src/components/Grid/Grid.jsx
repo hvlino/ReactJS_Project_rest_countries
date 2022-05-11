@@ -29,6 +29,10 @@ const GridDiv = styled.div`
   }
   .Dropdown-control {
     box-shadow: ${(props) => props.theme[props.currenttheme].shadow};
+    &:hover {
+      background-color: ${(props) => props.theme[props.currenttheme].hovercontrol};
+      transition: background-color 500ms linear;
+    }
   }
   .Dropdown-option:hover {
         background-color: ${(props) => props.theme[props.currenttheme].hover};
