@@ -1,3 +1,5 @@
+const transition = 'all 200ms ease';
+
 export default {
   dark: {
     primaryBackground: '#2b3743',
@@ -5,6 +7,7 @@ export default {
     primaryText: '#FFF',
     shadow: '-1px 12px 24px -17px #000',
     hover: '#0002A3',
+    transition,
   },
   light: {
     primaryBackground: '#fafafa',
@@ -12,5 +15,6 @@ export default {
     primaryText: '#000',
     shadow: '-1px 12px 24px -17px #AAAAAA',
     hover: '#D2FDFF',
+    transition,
   },
 };
