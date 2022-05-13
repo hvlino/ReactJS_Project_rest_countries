@@ -30,6 +30,7 @@ const handles = [
 
 const server = setupServer(...handles);
 
+beforeEach(() => window.localStorage.removeItem('theme'));
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
@@ -156,6 +157,8 @@ test('should use sun when in light mode and moon when in dark mode', async () =>
   expect(container.querySelector('svg').innerHTML).toBe('sun-regular.svg');
   fireEvent.click(themeButton);
   expect(container.querySelector('svg').innerHTML).toBe('moon-regular.svg');
+  fireEvent.click(themeButton);
+  expect(container.querySelector('svg').innerHTML).toBe('sun-regular.svg');
 });
 
 test('should be able to view the details page of a border with no countries', async () => {
@@ -175,5 +178,7 @@ test('should be able to view the details page of a border with no countries', as
   await waitFor(async () => {
     const capital = screen.queryByText('Havana');
     expect(capital).toBeInTheDocument();
+    const borders = screen.queryByText('Border Countries');
+    expect(borders).not.toBeInTheDocument();
   });
 });

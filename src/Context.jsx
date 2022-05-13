@@ -1,5 +1,5 @@
 import React, {
-  createContext, useState, useMemo,
+  createContext, useState, useMemo, useEffect,
 } from 'react';
 import { getCountries, getTargetCountry } from './countryServices';
 
@@ -8,7 +8,12 @@ export const Context = createContext('');
 export default function ctx({ children }) {
   const [countries, setCountries] = useState([]);
   const [activeFilter, setActiveFilter] = useState('All');
-  const [theme, setTheme] = useState('light');
+  const currentTheme = window.localStorage.getItem('theme');
+  const [theme, setTheme] = useState(currentTheme ?? 'light');
+
+  useEffect(() => {
+    window.localStorage.setItem('theme', theme);
+  }, [theme]);
 
   const loadCountries = async (signal) => {
     const results = await getCountries(signal);

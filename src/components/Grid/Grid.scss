@@ -63,6 +63,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     width: 200px;
+    animation: goDown 600ms ease 0s 1 alternate forwards;
 
     .Dropdown-option {
       position: sticky;
@@ -70,4 +71,18 @@
       border-radius: 7px;
     }
   }
+}
+
+@keyframes goDown {
+	0% {
+		opacity: 0;
+		transform: rotateX(-100deg);
+		transform-origin: top;
+	}
+
+	100% {
+		opacity: 1;
+		transform: rotateX(0deg);
+		transform-origin: top;
+	}
 }
