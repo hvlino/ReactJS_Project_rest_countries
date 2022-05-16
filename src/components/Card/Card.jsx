@@ -6,6 +6,7 @@ import './Card.scss';
 import { Context } from '../../Context';
 
 const StyledCard = styled.div`
+  transition: ${(props) => props.theme[props.currenttheme].transition};
   background: ${(props) => props.theme[props.currenttheme].primaryBackground};
   color: ${(props) => props.theme[props.currenttheme].primaryText};
   box-shadow: ${(props) => props.theme[props.currenttheme].shadow};

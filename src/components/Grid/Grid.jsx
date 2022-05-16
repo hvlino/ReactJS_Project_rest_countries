@@ -5,13 +5,17 @@ import { Context } from '../../Context';
 import Card from '../Card/Card';
 import './Grid.scss';
 import Spinner from '../Spinner/spinner';
+import { ReactComponent as ChevronUp } from '../../icons/chevron-up.svg';
+import { ReactComponent as ChevronDown } from '../../icons/chevron-down.svg';
 
 const GridDiv = styled.div`
   background: ${(props) => props.theme[props.currenttheme].secondaryBackground};
   color: ${(props) => props.theme[props.currenttheme].primaryText};
+  transition: ${(props) => props.theme[props.currenttheme].transition};
   input {
     background: ${(props) => props.theme[props.currenttheme].primaryBackground};
     color: ${(props) => props.theme[props.currenttheme].primaryText};
+    transition: ${(props) => props.theme[props.currenttheme].transition};
   }
   input::placeholder {
     color: ${(props) => props.theme[props.currenttheme].primaryText};
@@ -29,8 +33,7 @@ const GridDiv = styled.div`
     background: ${(props) => props.theme[props.currenttheme].primaryBackground};
     color: ${(props) => props.theme[props.currenttheme].primaryText};
   }
-  .Dropdown-control img {
-    filter: invert();
+  svg {
   }
   .Dropdown-control {
     box-shadow: ${(props) => props.theme[props.currenttheme].shadow};
@@ -40,8 +43,8 @@ const GridDiv = styled.div`
     }
   }
   .Dropdown-option:hover {
-        background-color: ${(props) => props.theme[props.currenttheme].hover};
-      }
+  background-color: ${(props) => props.theme[props.currenttheme].hover};
+  }
 `;
 
 export function Grid() {
@@ -103,8 +106,8 @@ export function Grid() {
               <Dropdown
                 options={options}
                 placeholder="Filter By Region"
-                arrowOpen={<img src="https://img.icons8.com/ios-glyphs/10/000000/chevron-up.png" alt="chevron-down" />}
-                arrowClosed={<img src="https://img.icons8.com/ios-glyphs/10/000000/chevron-down.png" alt="chevron-down" />}
+                arrowOpen={<ChevronUp />}
+                arrowClosed={<ChevronDown />}
                 onChange={(filter) => {
                   setActiveFilter(filter.value);
                 }}
@@ -115,8 +118,8 @@ export function Grid() {
             <Dropdown
               options={options}
               placeholder="Filter By Region"
-              arrowOpen={<img src="https://img.icons8.com/ios-glyphs/10/000000/chevron-up.png" alt="chevron-down" />}
-              arrowClosed={<img src="https://img.icons8.com/ios-glyphs/10/000000/chevron-down.png" alt="chevron-down" />}
+              arrowOpen={<ChevronUp />}
+              arrowClosed={<ChevronDown />}
               onChange={(filter) => {
                 setActiveFilter(filter.value);
               }}

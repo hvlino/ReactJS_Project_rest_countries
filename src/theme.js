@@ -1,3 +1,5 @@
+const transition = 'all 200ms ease';
+
 export default {
   dark: {
     primaryBackground: '#2b3743',
@@ -8,6 +10,7 @@ export default {
     focusShadow: '0px 4px 10px 3px rgba(0,0,0,0.5)',
     hover: '#1F4E7A',
     hovercontrol: '#334352',
+    transition,
   },
   light: {
     primaryBackground: '#fafafa',
@@ -18,5 +21,6 @@ export default {
     focusShadow: '0px 4px 10px 3px rgba(0,0,0,0.2)',
     hover: '#D2FDFF',
     hovercontrol: '#F1F1F1',
+    transition,
   },
 };
