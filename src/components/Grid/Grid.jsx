@@ -1,6 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Dropdown from 'react-dropdown';
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
 import { Context } from '../../Context';
 import Card from '../Card/Card';
 import './Grid.scss';
@@ -128,9 +132,15 @@ export function Grid() {
           <div className="country-grid">
             <div className="country-card">
               <div className="container">
-                {filteredCountries.filter((country) => country.name.common.toLowerCase()
-                  .includes(targetCountries.toLowerCase()))
-                  .map((country) => <Card country={country} key={country.name.common} />)}
+                <TransitionGroup component={null} appear exit={false}>
+                  {filteredCountries.filter((country) => country.name.common.toLowerCase()
+                    .includes(targetCountries.toLowerCase()))
+                    .map((country) => (
+                      <CSSTransition key={country.name.common} timeout={500} classNames="item">
+                        <Card country={country} />
+                      </CSSTransition>
+                    ))}
+                </TransitionGroup>
               </div>
             </div>
           </div>
